@@ -22,7 +22,7 @@ although it's not really a requirement.
 1. Signup for an [AT&T M2X Account](https://m2x.att.com/signup).
 2. Create your first [Data Source Blueprint](https://m2x.att.com/blueprints)
 3. Add a Stream to your Data Source Blueprint
-4. Add a Trigger to your Data Source Stream and point the callback URL to the domain where your application will be hosted (Heroku will provide you with this URL). The URL path (unless you changed it) will be /email-trigger, so an example URL would be: http://your-domain.com/email-trigger
+4. Add a Trigger to your Data Source Stream and point the callback URL to the domain where your application will be hosted (Heroku will provide you with this URL). The URL path (unless you changed it in the code) will be /email-trigger, so an example URL would be: http://your-domain.com/email-trigger
 5. Start pushing values to your Data Source Stream.
 
 Please consult the [AT&T M2X glossary](https://m2x.att.com/developer/documentation/glossary) if you have questions about any M2X specific terms.
@@ -33,7 +33,8 @@ Please consult the [AT&T M2X glossary](https://m2x.att.com/developer/documentati
 Once everything is setup and values are being pushed to your Stream, every time a value
 meets the Trigger's condition the API will send a request to your application at the
 URL provided. The app will then process the request and send an email to the address
-you specified in the code (environment variables could be used for this too).
+specified in the code (environment variables could be used for storing these values
+instead of being inlined in the code).
 
 
 ## License
