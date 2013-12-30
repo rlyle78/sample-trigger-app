@@ -11,7 +11,7 @@ although it's not really a requirement.
 
 1. Signup/Login to Heroku and create a new app.
 2. Add the Sendgrid Add-on
-3. [Set the following env variables on heroku] using your SendGrid credentials: SENDGRID_USERNAME, SENDGRID_PASSWORD
+3. [Set the following env variables on heroku](https://devcenter.heroku.com/articles/config-vars) using your SendGrid credentials: SENDGRID_USERNAME, SENDGRID_PASSWORD
 4. Edit the main.js file and set constants for the notification emails. Push those changes to Heroku.
 5. Make sure you've pushed the Procfile as this is needed by Heroku.
 6. In your application root directory run `heroku ps:scale web=1` to start one dyno of your app.
