@@ -1,0 +1,16 @@
+{
+  "name": "sample-trigger-app",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node main.js"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "express": "^4.10.6",
+    "sendgrid": "^1.4.0"
+  }
+}
