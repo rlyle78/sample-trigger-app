@@ -4,6 +4,7 @@
 
 var util = require("util");
 var express = require("express");
+var bodyParser = require("body-parser");
 
 
 // Define from/to constants used to form and send each notification email
@@ -32,14 +33,16 @@ var EMAIL_SUBJECT = "Trigger notification";
 var EMAIL_BODY = "Current value: %s";
 
 
-// Initialize express app that will handle trigger requests from the API
+// Initialize express application that will handle trigger requests from the API
 var app = express();
 
-app.configure(function() {
-    // bodyParser makes sure the JSON request data from the API comes as an object
-    app.use(express.bodyParser());
-    app.use(app.router);
-});
+// Heroku sets the PORT environment variable with the port it expects the application
+// to listen for connections. If you are going to run this application outside
+// Heroku, you can set the variable, or change this to whatever fits your needs.
+app.set("port", process.env.PORT || 5000);
+
+// bodyParser makes sure the JSON request data from the API comes as an object
+app.use(bodyParser.json());
 
 
 // Initialize SendGrid object
@@ -54,18 +57,10 @@ app.post("/email-trigger", function(req, res) {
 
     // In order to include more information in our email we pass the
     // current value for the stream that triggered this event.
-    // Other data coming in this request, as shown in the
-    // AT&T M2X API documentation (http://m2x.att.com/developer/documentation/feed#Test-Trigger) is:
     //
-    // * feed_id Feed's unique identifier.
-    // * stream Stream's name.
-    // * trigger_name The trigger's name.
-    // * trigger_description The condition that caused the trigger to be fired.
-    // * condition The operator for the trigger's condition.
-    // * threshold The threshold value that's evaluated for this trigger.
-    // * value The stream value that caused this trigger to be fired.
-    // * at The timestamp at which this value was received.
-    //
+    // To see which data comes with the request, please check the
+    // AT&T M2X API documentation:
+    // http://m2x.att.com/developer/documentation/v2/device#Test-Trigger
     var body = util.format(EMAIL_BODY, req.body.value);
 
     sendgrid.send({
@@ -78,7 +73,11 @@ app.post("/email-trigger", function(req, res) {
     res.send("OK");
 });
 
-// 5000 is the internal port Heroku uses to access our app instance.
-// If you're using this outside Heroku on your own server you can change this
-// to whatever fits your needs.
-app.listen(5000);
+app.get("/status", function(req, res) {
+    res.send("Application is running!");
+});
+
+
+app.listen(app.get("port"), function() {
+  console.log("Node app is running at localhost:" + app.get("port"));
+});
