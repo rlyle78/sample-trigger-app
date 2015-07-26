@@ -6,31 +6,28 @@ This small [node.js](http://nodejs.org/) application intends to show a simple wa
 
 ## Setup Application
 
-1. Signup/Login to Heroku and [create a new application](https://devcenter.heroku.com/articles/quickstart)
-2. Add the SendGrid Add-on
-3. [Set the following env variables on heroku](https://devcenter.heroku.com/articles/config-vars) using your SendGrid credentials: SENDGRID_USERNAME, SENDGRID_PASSWORD
-4. Edit the main.js file and set constants for the notification emails. Push those changes to Heroku.
-5. In your application root directory run `heroku ps:scale web=1` to start one dyno of your application.
-6. You can check the status by going into the `/status` path, of your published application URL.
+1. Clone this repo and set constants for the notification emails (`EMAIL_FROM` and `EMAIL_RCPT`) in [`main.js`](https://github.com/attm2x/sample-trigger-app/blob/master/main.js)
+2. Signup/Login to Heroku, [create a new application](https://devcenter.heroku.com/articles/quickstart) and push code to Heroku
+3. Add the SendGrid Add-on to the newly created Heroku application
+4. You can check the status by going into the `/status` path, of your published application URL.
 
 
-## Setup Device, Stream and Trigger
+## Setup Device, Stream(s) and Trigger
 
 1. Signup for an [AT&T M2X Account](https://m2x.att.com/signup).
 2. Create your first [Device](https://m2x.att.com/devices)
-3. Add a Stream to your Device
-4. Add a Trigger to your Device Stream and point the callback URL to the domain where your application will be hosted (Heroku will provide you with this URL). By default, the URL path will be `/email-trigger`, so an example URL would be: http://your-domain.com/email-trigger
-5. Start pushing values to your Device Stream.
+3. Add Stream(s) to your Device
+4. Add a Trigger to your Device and point the callback URL to the domain where your application will be hosted (Heroku will provide you with this URL). By default, the URL path will be `/email-trigger`, so an example URL would be: http://your-domain.com/email-trigger
+5. Start pushing values to your Device Stream(s).
 
 Please consult the [AT&T M2X glossary](https://m2x.att.com/developer/documentation/v2/glossary) if you have questions about any M2X specific terms.
 
 
 ## Usage
 
-Once everything is setup and values are being pushed to your Stream, every time a value meets the Trigger's condition the API will send a request to your application at the URL provided. The application will then process the request and send an email to the address specified in the code (environment variables could be used for storing these values instead of being hardcoded in the source).
+Once everything is setup and values are being pushed to your Stream(s), every time a value(s) meets the Trigger condition the API will send a `POST`request to your application at the URL provided. The application will then process the request and send an email to/from the addresses specified in the code in the `EMAIL_FROM` and `EMAIL_RCPT` variables.
 
 
 ## License
 
 This application is delivered under the MIT license. See [LICENSE](LICENSE) for the specific terms.
-
