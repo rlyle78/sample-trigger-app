@@ -12,9 +12,19 @@ This small [node.js](http://nodejs.org/) application intends to show a simple wa
 
 1. Deploy the application using the Heroku Deploy button above (Heroku account required)
 2. [Clone](https://devcenter.heroku.com/articles/git-clone-heroku-app) the newly created Heroku application
-`heroku git:clone -a myapp`
-3. Set constants for the notification emails (`EMAIL_FROM` and `EMAIL_RCPT`) in [`main.js`](https://github.com/attm2x/sample-trigger-app/blob/master/main.js)
-4. You can check the status by going into the `/status` path, of your published application URL, which can be found in your Heroku settings under Domains
+`$ heroku git:clone -a myapp`
+3. Add the heroku remote to the git repository:
+`$ git remote add heroku git@heroku.com:myapp.git`
+4. Set constants for the notification emails (`EMAIL_FROM` and `EMAIL_RCPT`) in [`main.js`](https://github.com/attm2x/sample-trigger-app/blob/master/main.js)
+5. Commit your changes to the Git repository, and ush your updated code to Heroku:
+
+    ```bash
+    $ git add .
+    $ git commit -m "Update emails"
+    $ git push heroku master
+    ```
+
+6. You can check the status by going into the `/status` path, of your published application URL, which can be found in your Heroku settings under Domains
 
 ### Manual Setup
 1. Clone this repo and set constants for the notification emails (`EMAIL_FROM` and `EMAIL_RCPT`) in [`main.js`](https://github.com/attm2x/sample-trigger-app/blob/master/main.js)
