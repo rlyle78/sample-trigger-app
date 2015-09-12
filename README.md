@@ -6,11 +6,21 @@ This small [node.js](http://nodejs.org/) application intends to show a simple wa
 
 ## Setup Application
 
+### Via Heroku Deploy Button (Recommended)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+1. Deploy the application using the Heroku Deploy button above (Heroku account required)
+2. [Clone](https://devcenter.heroku.com/articles/git-clone-heroku-app) the newly created Heroku application
+`heroku git:clone -a myapp`
+3. Set constants for the notification emails (`EMAIL_FROM` and `EMAIL_RCPT`) in [`main.js`](https://github.com/attm2x/sample-trigger-app/blob/master/main.js)
+4. You can check the status by going into the `/status` path, of your published application URL, which can be found in your Heroku settings under Domains
+
+### Manual Setup
 1. Clone this repo and set constants for the notification emails (`EMAIL_FROM` and `EMAIL_RCPT`) in [`main.js`](https://github.com/attm2x/sample-trigger-app/blob/master/main.js)
 2. Signup/Login to Heroku, [create a new application](https://devcenter.heroku.com/articles/quickstart) and push code to Heroku
 3. Add the SendGrid Add-on to the newly created Heroku application
-4. You can check the status by going into the `/status` path, of your published application URL.
-
+4. You can check the status by going into the `/status` path, of your published application URL, which can be found in your Heroku settings under Domains
 
 ## Setup Device, Stream(s) and Trigger
 
