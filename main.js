@@ -45,7 +45,7 @@ app.post("/email-trigger", function(req, res) {
     //
     // To see which data comes with the request, please check the
     // AT&T M2X API documentation:
-    // http://m2x.att.com/developer/documentation/v2/device#Test-Trigger
+    // https://m2x.att.com/developer/documentation/v2/triggers#Test-Trigger
     var body = "";
     for(var stream in req.body.values) {
         body = body + stream + ": " + req.body.values[stream].value + ", ";
