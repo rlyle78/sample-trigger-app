@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "body-parser": "^1.5.2",
-    "express": "^4.10.6"
+    "express": "^4.10.6",
+    "sendgrid": "^1.4.0"
   }
 }
