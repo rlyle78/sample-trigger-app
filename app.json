@@ -1,7 +1,7 @@
 {
-  "name": "M2X Node.js Trigger Sample App",
-  "description": "AT&amp;T M2X Node.js Trigger Sample App, for receiving Trigger notification post requests sent by M2X.",
-  "repository": "https://github.com/attm2x/m2x-demo-heroku-ruby",
+  "name": "M2X Trigger Notification App",
+  "description": "AT&amp;T M2X Node.js Sample Trigger Notification app.",
+  "repository": "https://github.com/attm2x/sample-trigger-app",
   "keywords": ["node.js", "m2x", "trigger"],
   "addons": ["sendgrid:starter"]
 }
